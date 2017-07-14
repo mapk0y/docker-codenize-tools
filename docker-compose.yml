@@ -1,0 +1,43 @@
+# vi: set ft=yaml et ts=2 sw=2 sts=0:
+
+version: '2'
+services:
+  base: &default
+    build: .
+    image: mapk0y/codenize-tools
+    env_file: envfile
+    working_dir: /settings/
+    volumes:
+      - ./settings/:/settings:rw
+  # Security Group
+  sg:
+    <<: *default
+    command: sh -c "piculet -e -o /settings/Groupfile --split && rm /settings/Groupfile && ruby inject_definition.rb"
+  # IAM
+  iam:
+    <<: *default
+    command: miam -e -o /settings/IAMfile
+  # Elastic IP
+  eip:
+    <<: *default
+    command: eipmap -e -o /settings/EIPfile
+  # Route53
+  route53:
+    <<: *default
+    command: roadwork -e -o /settings/Routefile
+  # Elastic Load Balancer
+  elb:
+    <<: *default
+    command: kelbim -e -o /settings/ELBfile
+  # VPC RouteTable
+  vpc:
+    <<: *default
+    command: mappru -e -o /settings/Routetable
+  # CroudFront
+  cf:
+    <<: *default
+    command: cfdef -e -o /settings/CFfile
+  # Shell for Debug
+  shell:
+    <<: *default
+    command: sh
