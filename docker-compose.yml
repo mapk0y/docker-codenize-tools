@@ -6,9 +6,9 @@ services:
     build: .
     image: mapk0y/codenize-tools
     env_file: envfile
-    working_dir: /settings/
+    working_dir: /working/
     volumes:
-      - ./settings/:/settings:rw
+      - ./:/working:rw
   # Security Group
   sg:
     <<: *default
