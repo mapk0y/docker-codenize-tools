@@ -12,31 +12,31 @@ services:
   # Security Group
   sg:
     <<: *default
-    command: sh -c "piculet -e -o /settings/Groupfile --split && rm /settings/Groupfile && ruby inject_definition.rb"
+    command: sh -c "piculet -e -o /working/Groupfile --split && rm /working/Groupfile && ruby inject_definition.rb"
   # IAM
   iam:
     <<: *default
-    command: miam -e -o /settings/IAMfile
+    command: miam -e -o /working/IAMfile
   # Elastic IP
   eip:
     <<: *default
-    command: eipmap -e -o /settings/EIPfile
+    command: eipmap -e -o /working/EIPfile
   # Route53
   route53:
     <<: *default
-    command: roadwork -e -o /settings/Routefile
+    command: roadwork -e -o /working/Routefile
   # Elastic Load Balancer
   elb:
     <<: *default
-    command: kelbim -e -o /settings/ELBfile
+    command: kelbim -e -o /working/ELBfile
   # VPC RouteTable
   vpc:
     <<: *default
-    command: mappru -e -o /settings/Routetable
+    command: mappru -e -o /working/Routetable
   # CroudFront
   cf:
     <<: *default
-    command: cfdef -e -o /settings/CFfile
+    command: cfdef -e -o /working/CFfile
   # Shell for Debug
   shell:
     <<: *default

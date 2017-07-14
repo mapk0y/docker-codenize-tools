@@ -12,44 +12,44 @@ services:
   # Security Group
   sg-dryrun:
     <<: *default
-    command: piculet -a --dry-run -f /settings/Groupfile
+    command: piculet -a --dry-run -f /working/Groupfile
   sg-apply:
     <<: *default
-    command: piculet -a -f /settings/Groupfile
+    command: piculet -a -f /working/Groupfile
   # IAM
   iam-dryrun:
     <<: *default
-    command: miam -a --dry-run -f /settings/IAMfile
+    command: miam -a --dry-run -f /working/IAMfile
   iam-apply:
     <<: *default
-    command: miam -a -f /settings/IAMfile
+    command: miam -a -f /working/IAMfile
   # Elastic IP
   eip-dryrun:
     <<: *default
-    command: eipmap -a --dry-run -f /settings/EIPfile
+    command: eipmap -a --dry-run -f /working/EIPfile
   eip-apply:
     <<: *default
-    command: eipmap -a -f /settings/EIPfile
+    command: eipmap -a -f /working/EIPfile
   # Route53
   route53-test:
     <<: *default
-    command: roadwork -t -f /settings/Routefile
+    command: roadwork -t -f /working/Routefile
   route53-dryrun:
     <<: *default
-    command: roadwork -a --dry-run -f /settings/Routefile
+    command: roadwork -a --dry-run -f /working/Routefile
   route53-apply:
     <<: *default
-    command: roadwork -a -f /settings/Routefile
+    command: roadwork -a -f /working/Routefile
   # Elastic Load Balancer
   elb-test:
     <<: *default
-    command: kelbim -t /settings/ELBfile
+    command: kelbim -t /working/ELBfile
   elb-dryrun:
     <<: *default
-    command: kelbim -a --dry-run -f /settings/ELBfile
+    command: kelbim -a --dry-run -f /working/ELBfile
   elb-apply:
     <<: *default
-    command: kelbim -a -f /settings/ELBfile
+    command: kelbim -a -f /working/ELBfile
   # Shell for Debug
   shell:
     <<: *default
