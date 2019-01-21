@@ -1,6 +1,6 @@
 FROM ruby:alpine
 
-COPY Gemfile /
+COPY Gemfile Gemfile.lock /
 RUN set -ex \
       && apk add --no-cache --virtual .codenize-builddeps \
          build-base \
